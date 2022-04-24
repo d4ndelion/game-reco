@@ -1,4 +1,4 @@
-package com.example.gamereco
+package com.dandelion.gamereco
 
 import org.junit.Test
 
