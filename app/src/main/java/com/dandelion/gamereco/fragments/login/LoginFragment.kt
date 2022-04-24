@@ -1,9 +1,13 @@
 package com.dandelion.gamereco.fragments.login
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.dandelion.gamereco.R
 import com.dandelion.gamereco.databinding.FragmentLoginBinding
 import com.dandelion.gamereco.fragments.base.BaseFragment
+import com.dandelion.gamereco.utils.doOnClick
+import com.dandelion.gamereco.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -11,4 +15,13 @@ class LoginFragment : BaseFragment<LoginVM, FragmentLoginBinding>(R.layout.fragm
 
     override val viewModel by viewModels<LoginVM>()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.loginButton.doOnClick {
+            viewModel.logIn(binding.steamIdEditView.text.toString())
+        }
+        observe(viewModel.vanityUrl) {
+            it
+        }
+    }
 }
