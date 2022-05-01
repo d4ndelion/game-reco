@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">game-reco</string>
+
+    <!-- LoginFragment -->
+    <string name="fragment_login_log_in">log in</string>
+    <string name="login_fragment_hint">Enter your steam vanity</string>
 </resources>
