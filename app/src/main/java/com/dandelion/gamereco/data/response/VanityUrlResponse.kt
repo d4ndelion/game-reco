@@ -4,12 +4,13 @@ import com.dandelion.gamereco.domain.models.VanityModel
 import com.google.gson.annotations.SerializedName
 
 data class VanityUrlResponse(
-    @SerializedName("response") var response: SteamResponse
+    @SerializedName("response") val response: SteamResponse
 )
 
 data class SteamResponse(
-    @SerializedName("steamid") var steamid: String,
-    @SerializedName("success") var success: Int
+    @SerializedName("steamid") val steamId: String,
+    @SerializedName("success") val success: Int,
+    @SerializedName("message") val message: String?
 )
 
-fun VanityUrlResponse.toVanityModel() = VanityModel(response.steamid)
+fun VanityUrlResponse.toVanityModel() = VanityModel(response.steamId, response.message)

@@ -8,6 +8,7 @@ import com.dandelion.gamereco.databinding.FragmentLoginBinding
 import com.dandelion.gamereco.fragments.base.BaseFragment
 import com.dandelion.gamereco.utils.doOnClick
 import com.dandelion.gamereco.utils.observe
+import com.dandelion.gamereco.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,8 +21,6 @@ class LoginFragment : BaseFragment<LoginVM, FragmentLoginBinding>(R.layout.fragm
         binding.loginButton.doOnClick {
             viewModel.logIn(binding.steamIdEditView.text.toString())
         }
-        observe(viewModel.vanityUrl) {
-            it
-        }
+        observe(viewModel.error, ::showToast)
     }
 }
