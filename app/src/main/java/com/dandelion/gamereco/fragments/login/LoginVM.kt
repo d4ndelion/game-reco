@@ -2,7 +2,7 @@ package com.dandelion.gamereco.fragments.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.dandelion.gamereco.domain.models.VanityModel
+import com.dandelion.gamereco.domain.repositories.interfaces.IPreferencesRepository
 import com.dandelion.gamereco.domain.repositories.interfaces.ISteamAuthRepository
 import com.dandelion.gamereco.fragments.base.BaseViewModel
 import com.dandelion.gamereco.utils.errors.ERRORS.LOG_IN
@@ -16,12 +16,13 @@ import kotlinx.coroutines.launch
 private const val NO_MATCH = "No match"
 
 @HiltViewModel
-class LoginVM @Inject constructor(private val steamAuthRepository: ISteamAuthRepository) : BaseViewModel() {
+class LoginVM @Inject constructor(private val steamAuthRepository: ISteamAuthRepository, private val prefs: IPreferencesRepository) :
+    BaseViewModel() {
 
-    val vanityUrl = MutableLiveData<VanityModel>()
+    val nickname = MutableLiveData<String>()
 
-    fun logIn(nickname: String) = viewModelScope.launch {
-        steamAuthRepository.getVanity(nickname)
+    fun logIn() = viewModelScope.launch {
+        steamAuthRepository.getVanity(nickname.value ?: "")
             .catch {
                 error.sendError(LOG_IN)
             }
@@ -30,7 +31,10 @@ class LoginVM @Inject constructor(private val steamAuthRepository: ISteamAuthRep
                     error.sendError(LOG_IN)
                     return@collect
                 }
-                vanityUrl.postValue(it)
+                prefs.apply {
+                    isLoggedUser = true
+                    steamId = it.vanityString
+                }
                 navigateToScreen(MAIN)
             }
     }

@@ -16,8 +16,9 @@ import kotlinx.coroutines.flow.collect
 
 abstract class BaseFragment<VIEWMODEL : BaseViewModel, BINDING : ViewDataBinding>(@LayoutRes val layout: Int) : Fragment() {
 
-    lateinit var binding: BINDING
+    var binding: BINDING? = null
         private set
+
     abstract val viewModel: VIEWMODEL
 
     override fun onCreateView(
@@ -25,12 +26,18 @@ abstract class BaseFragment<VIEWMODEL : BaseViewModel, BINDING : ViewDataBinding
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, layout, container, false)
-        binding.lifecycleOwner = this
+        val binding: BINDING = DataBindingUtil.inflate(inflater, layout, container, false)
+        this.binding = binding
+        this.binding?.lifecycleOwner = this.viewLifecycleOwner
         viewModel.screenFlow observe {
             navigateToScreen(it)
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
     infix fun <T> Flow<T>.observe(consumer: (T) -> Unit) {
@@ -38,6 +45,12 @@ abstract class BaseFragment<VIEWMODEL : BaseViewModel, BINDING : ViewDataBinding
             this@observe.collect {
                 consumer(it)
             }
+        }
+    }
+
+    fun setToolbarVisibility(isVisible: Boolean) {
+        if (activity is MainActivity) {
+            (activity as MainActivity).setToolbarVisibility(isVisible)
         }
     }
 

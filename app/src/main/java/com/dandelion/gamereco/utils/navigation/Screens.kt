@@ -5,8 +5,10 @@ import com.dandelion.gamereco.R
 
 enum class SCREENS(
     val screenId: Int,
-    var navDirections: NavDirections? = null
+    var navDirections: NavDirections? = null,
+    var isToolbarVisible: Boolean = true
 ) {
+    SPLASH(R.id.splashFragment, isToolbarVisible = false),
     LOGIN(R.id.loginFragment),
     MAIN(R.id.mainFragment)
 }

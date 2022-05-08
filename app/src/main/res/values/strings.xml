@@ -5,4 +5,7 @@
     <string name="fragment_login_log_in">log in</string>
     <string name="login_fragment_hint">Enter your steam vanity</string>
     <string name="error_log_in">There is no such user with this vanity</string>
+
+    <!-- MainFragment -->
+    <string name="log_out">Log out</string>
 </resources>

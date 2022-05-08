@@ -4,13 +4,17 @@ import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import com.dandelion.gamereco.R
 
-fun NavController.setCurrentScreenWithNavController(screen: SCREENS) {
+fun NavController.setCurrentScreenWithNavController(screen: SCREENS, setupToolbar: () -> Unit) {
     if (screen.navDirections == null) {
-        runCatching { navigate(screen.screenId) }
+        runCatching {
+            navigate(screen.screenId)
+            setupToolbar.invoke()
+        }
     } else {
         runCatching {
             navigate(screen.navDirections!!)
             screen.navDirections = null
+            setupToolbar.invoke()
         }
     }
     if (screen.getStartDestinationScreens()) {
