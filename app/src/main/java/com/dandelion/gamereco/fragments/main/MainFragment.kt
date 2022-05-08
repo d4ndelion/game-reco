@@ -16,5 +16,6 @@ class MainFragment : BaseFragment<MainVM, FragmentMainBinding>(R.layout.fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.vm = viewModel
+        viewModel.getUserInfo()
     }
 }

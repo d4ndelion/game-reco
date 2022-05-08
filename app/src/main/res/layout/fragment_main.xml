@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,18 +10,69 @@
             type="com.dandelion.gamereco.fragments.main.MainVM" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userAvatarImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/steam_no_avatar"
+            app:imageUrl="@{vm.userAvatar}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/nicknameTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="MAIN"
+            android:text="@={vm.userName}"
             android:textColor="@color/black"
             android:textSize="30sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatarImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="nickname" />
+
+        <TextView
+            android:id="@+id/steamIdTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{@string/user_id(vm.userSteamId)}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatarImageView"
+            app:layout_constraintTop_toBottomOf="@id/nicknameTextView"
+            tools:text="id: asdasd" />
+
+        <TextView
+            android:id="@+id/lastLoggedTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{@string/account_last_logged(vm.userAccountLastLogDate)}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatarImageView"
+            app:layout_constraintTop_toBottomOf="@id/steamIdTextView"
+            tools:text="Last login date: asdasd" />
+
+        <TextView
+            android:id="@+id/accountCreatedTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{@string/account_created(vm.userAccountCreateDate)}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatarImageView"
+            app:layout_constraintTop_toBottomOf="@id/lastLoggedTextView"
+            tools:text="Account create date: asdasd" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"

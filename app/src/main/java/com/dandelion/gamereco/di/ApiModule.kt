@@ -1,6 +1,7 @@
 package com.dandelion.gamereco.di
 
 import com.dandelion.gamereco.data.api.IAuthApi
+import com.dandelion.gamereco.data.api.IPlayerApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,4 +49,7 @@ object ApiModule {
 
     @Provides
     fun provideAuthApi(retrofit: Retrofit): IAuthApi = retrofit.create(IAuthApi::class.java)
+
+    @Provides
+    fun providePlayerApi(retrofit: Retrofit): IPlayerApi = retrofit.create(IPlayerApi::class.java)
 }

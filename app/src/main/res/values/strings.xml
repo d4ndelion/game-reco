@@ -8,4 +8,7 @@
 
     <!-- MainFragment -->
     <string name="log_out">Log out</string>
+    <string name="user_id">id: %s</string>
+    <string name="account_created">Account create date: %s</string>
+    <string name="account_last_logged">Last login date: %s</string>
 </resources>
