@@ -24,6 +24,7 @@ class MainVM @Inject constructor(
     val userAvatar = MutableLiveData<String>()
     val userAccountLastLogDate = MutableLiveData<String>()
     val userAccountCreateDate = MutableLiveData<String>()
+    val isDataLoadingEnded = MutableLiveData(false)
 
     fun logout() {
         viewModelScope.launch {
@@ -49,6 +50,7 @@ class MainVM @Inject constructor(
                     userSteamId.postValue(it.steamId)
                     userAccountLastLogDate.postValue(it.lastLogoffDate)
                     userAccountCreateDate.postValue(it.createAccountDate)
+                    isDataLoadingEnded.postValue(true)
                 }
         }
     }
