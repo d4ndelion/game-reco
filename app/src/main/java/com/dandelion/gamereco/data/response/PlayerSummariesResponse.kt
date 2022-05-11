@@ -4,9 +4,9 @@ import com.dandelion.gamereco.domain.models.PlayerModel
 import com.dandelion.gamereco.utils.getDateFromUnixTime
 import com.google.gson.annotations.SerializedName
 
-data class PlayerSummariesResponse(@SerializedName("response") val response: Response)
+data class PlayerSummariesResponse(@SerializedName("response") val response: PlayersResponse)
 
-data class Response(@SerializedName("players") var players: ArrayList<Players>)
+data class PlayersResponse(@SerializedName("players") var players: ArrayList<Players>)
 
 data class Players(
     @SerializedName("steamid") val steamId: String,

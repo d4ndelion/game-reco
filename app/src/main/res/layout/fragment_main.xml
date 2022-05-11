@@ -76,14 +76,16 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="36dp"
             android:backgroundTint="@color/secondary_orange"
             android:onClick="@{() -> vm.logout()}"
             android:text="@string/log_out"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/userAvatarImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatarImageView"
+            app:layout_constraintTop_toBottomOf="@id/accountCreatedTextView" />
 
         <androidx.constraintlayout.widget.Group
             isVisible="@{vm.isDataLoadingEnded}"
@@ -99,6 +101,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
