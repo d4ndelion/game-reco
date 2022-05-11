@@ -40,7 +40,7 @@ class MainVM @Inject constructor(
             return
         }
         viewModelScope.launch {
-            playerRepository.getPlayerSummaries(prefs.steamId!!)
+            playerRepository.getPlayerSummaries()
                 .catch {
                     Timber.e(it)
                 }

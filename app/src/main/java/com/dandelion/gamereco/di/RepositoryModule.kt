@@ -27,5 +27,6 @@ object RepositoryModule {
     fun provideAuthRepository(api: IAuthApi): ISteamAuthRepository = SteamAuthRepository(api)
 
     @Provides
-    fun providePlayerRepository(api: IPlayerApi): IPlayerRepository = PlayerRepository(api)
+    fun providePlayerRepository(api: IPlayerApi, preferences: IPreferencesRepository): IPlayerRepository =
+        PlayerRepository(api, preferences)
 }

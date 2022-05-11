@@ -1,5 +1,6 @@
 package com.dandelion.gamereco.data.response
 
+import com.dandelion.gamereco.domain.models.GameStatsModel
 import com.google.gson.annotations.SerializedName
 
 data class GameStatsResponse(
@@ -21,4 +22,10 @@ data class Achievements(
 data class Stats(
     @SerializedName("name") val name: String,
     @SerializedName("value") val value: Int
+)
+
+fun GameStatsResponse.toDomain() = GameStatsModel(
+    gameName = playerStats.gameName,
+    stats = playerStats.stats,
+    achievements = playerStats.achievements
 )
