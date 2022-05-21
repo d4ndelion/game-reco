@@ -5,6 +5,7 @@ import com.dandelion.gamereco.data.response.toDomain
 import com.dandelion.gamereco.domain.models.GameStatsModel
 import com.dandelion.gamereco.domain.models.OwnedGamesModel
 import com.dandelion.gamereco.domain.models.PlayerModel
+import com.dandelion.gamereco.domain.models.RecentlyPlayedGameModel
 import com.dandelion.gamereco.domain.repositories.interfaces.IPlayerRepository
 import com.dandelion.gamereco.domain.repositories.interfaces.IPreferencesRepository
 import com.dandelion.gamereco.utils.STEAM_API_KEY
@@ -28,5 +29,10 @@ class PlayerRepository(private val playerApi: IPlayerApi, private val prefs: IPr
     override suspend fun getGameInfo(appId: Int): Flow<GameStatsModel> = flow {
         val gameInfo = playerApi.getGameInfo(STEAM_API_KEY, prefs.steamId ?: "", appId).toDomain()
         emit(gameInfo)
+    }
+
+    override suspend fun getRecentlyPlayed(): Flow<List<RecentlyPlayedGameModel>> = flow {
+        val recentlyPlayedGames = playerApi.getRecentlyPlayed(STEAM_API_KEY, prefs.steamId ?: "", JSON_FORMAT).toDomain()
+        emit(recentlyPlayedGames)
     }
 }
