@@ -91,7 +91,7 @@
             isVisible="@{vm.isDataLoadingEnded}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:constraint_referenced_ids="accountCreatedTextView,lastLoggedTextView,nicknameTextView,steamIdTextView,logoutButton,userAvatarImageView" />
+            app:constraint_referenced_ids="accountCreatedTextView,lastLoggedTextView,nicknameTextView,steamIdTextView,logoutButton,userAvatarImageView,friendListButton" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -104,13 +104,24 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="gone" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/friendListButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:onClick="@{() -> vm.moveToFriends()}"
+            android:text="@string/view_friends"
+            app:icon="@drawable/ic_friends"
+            app:layout_constraintTop_toBottomOf="@id/userAvatarImageView" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/userAvatarImageView">
+            app:layout_constraintTop_toBottomOf="@id/friendListButton">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/gamesRecyclerView"

@@ -36,3 +36,13 @@ fun PlayerSummariesResponse.toDomain() = PlayerModel(
     createAccountDate = getDateFromUnixTime(response.players[0].timeCreated) ?: "",
     lastLogoffDate = getDateFromUnixTime(response.players[0].lastLogoff) ?: ""
 )
+
+fun PlayerSummariesResponse.toFriendsList() = response.players.map {
+    PlayerModel(
+        nickname = it.personaName,
+        steamId = it.steamId,
+        avatarUrl = it.avatarFull,
+        createAccountDate = getDateFromUnixTime(it.timeCreated) ?: "",
+        lastLogoffDate = getDateFromUnixTime(it.lastLogoff) ?: ""
+    )
+}

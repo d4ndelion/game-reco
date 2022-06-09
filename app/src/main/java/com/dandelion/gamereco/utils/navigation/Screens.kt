@@ -10,5 +10,6 @@ enum class SCREENS(
 ) {
     SPLASH(R.id.splashFragment, isToolbarVisible = false),
     LOGIN(R.id.loginFragment),
-    MAIN(R.id.mainFragment)
+    MAIN(R.id.mainFragment),
+    FRIENDS(R.id.friendsFragment);
 }

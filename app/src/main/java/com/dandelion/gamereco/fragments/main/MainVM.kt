@@ -2,11 +2,10 @@ package com.dandelion.gamereco.fragments.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.dandelion.gamereco.domain.models.GameStatsModel
-import com.dandelion.gamereco.domain.models.RecentlyPlayedGameModel
 import com.dandelion.gamereco.domain.repositories.interfaces.IPlayerRepository
 import com.dandelion.gamereco.domain.repositories.interfaces.IPreferencesRepository
 import com.dandelion.gamereco.fragments.base.BaseViewModel
+import com.dandelion.gamereco.utils.navigation.SCREENS.FRIENDS
 import com.dandelion.gamereco.utils.navigation.SCREENS.LOGIN
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -74,5 +73,9 @@ class MainVM @Inject constructor(
                     recentGames.postValue(it)
                 }
         }
+    }
+
+    fun moveToFriends() {
+        navigateToScreen(FRIENDS)
     }
 }
