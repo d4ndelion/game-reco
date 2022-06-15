@@ -2,6 +2,8 @@ package com.dandelion
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import com.dandelion.gamereco.R
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
     }
 
     fun navigateToScreen(screen: SCREENS) {

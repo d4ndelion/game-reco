@@ -36,6 +36,7 @@ class PopularGamesFragment : BaseFragment<PopularGamesVM, FragmentPopularGamesBi
                     )
                 }
             }
+            view.postDelayed({ viewModel.isDataLoadingEnded.postValue(true) }, 4000)
         }
     }
 }

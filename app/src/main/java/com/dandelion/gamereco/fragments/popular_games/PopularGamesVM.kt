@@ -19,7 +19,7 @@ import timber.log.Timber
 class PopularGamesVM @Inject constructor(private val playerRepository: IPlayerRepository) : BaseViewModel() {
 
     val recentlyPlayedGames = MutableLiveData<List<GameItemVM>>()
-    val isDataLoadingEnded = MutableLiveData(true)
+    val isDataLoadingEnded = MutableLiveData(false)
 
     fun getPopularGames(friendIDs: Array<String>) = viewModelScope.launch {
         friendIDs.forEach {
