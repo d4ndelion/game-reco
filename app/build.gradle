@@ -5,6 +5,7 @@ plugins {
 }
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-android'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdk 32

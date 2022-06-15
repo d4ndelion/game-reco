@@ -55,6 +55,11 @@ class PlayerRepository(private val playerApi: IPlayerApi, private val prefs: IPr
         emit(recentlyPlayedGames)
     }
 
+    override suspend fun getFriendsRecentlyPlayed(id: String): Flow<List<RecentlyPlayedGameModel>> = flow {
+        val recentlyPlayedGames = playerApi.getRecentlyPlayed(STEAM_API_KEY, id, JSON_FORMAT).toDomain()
+        emit(recentlyPlayedGames)
+    }
+
     override suspend fun getFriendsList(): Flow<List<String>> = flow {
         val friendsListResponse = playerApi.getFriendsList(STEAM_API_KEY, prefs.steamId ?: "", RELATION_FRIEND)
             .friendsList.friends.map(Friends::steamId)

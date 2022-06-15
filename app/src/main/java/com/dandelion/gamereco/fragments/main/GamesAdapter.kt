@@ -8,7 +8,7 @@ import com.dandelion.gamereco.fragments.base.recycler.BaseAdapter
 import com.dandelion.gamereco.fragments.base.recycler.ItemViewModel
 import com.dandelion.gamereco.fragments.base.recycler.ViewHolder
 
-class GameItemVM(title: String, imageUrl: String) : ItemViewModel() {
+class GameItemVM(title: String, imageUrl: String, val playTime: Long = 0L) : ItemViewModel() {
     val gameImageUrl = MutableLiveData(imageUrl)
     val gameTitle = MutableLiveData(title)
 }

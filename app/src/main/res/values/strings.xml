@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">game-reco</string>
 
+    <!-- ImageDescriptions -->
+    <string name="desc_game_wrapper">game wrapper</string>
+
     <!-- LoginFragment -->
     <string name="fragment_login_log_in">log in</string>
     <string name="login_fragment_hint">Enter your steam vanity</string>
@@ -15,7 +18,8 @@
 
     <!-- FriendsFragment -->
     <string name="your_friends">Your Friends</string>
+    <string name="view_popular_games">View popular games</string>
 
-    <!-- ImageDescriptions -->
-    <string name="desc_game_wrapper">game wrapper</string>
+    <!-- PopularGamesFragment -->
+    <string name="choice_of_your_friends">Choice of your friends</string>
 </resources>

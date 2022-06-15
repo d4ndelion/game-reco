@@ -12,5 +12,6 @@ interface IPlayerRepository {
     suspend fun getOwnedGames(): Flow<OwnedGamesModel>
     suspend fun getGameInfo(appId: Int): Flow<GameStatsModel>
     suspend fun getRecentlyPlayed(): Flow<List<RecentlyPlayedGameModel>>
+    suspend fun getFriendsRecentlyPlayed(id: String): Flow<List<RecentlyPlayedGameModel>>
     suspend fun getFriendsList(): Flow<List<String>>
 }

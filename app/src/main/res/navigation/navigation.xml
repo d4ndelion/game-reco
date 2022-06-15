@@ -45,5 +45,19 @@
         android:id="@+id/friendsFragment"
         android:name="com.dandelion.gamereco.fragments.friends.FriendsFragment"
         android:label="FriendsFragment"
-        tools:layout="@layout/fragment_friends" />
+        tools:layout="@layout/fragment_friends">
+        <action
+            android:id="@+id/checkPopularGames"
+            app:destination="@id/popularGamesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/popularGamesFragment"
+        android:name="com.dandelion.gamereco.fragments.popular_games.PopularGamesFragment"
+        android:label="PopularGamesFragment"
+        tools:layout="@layout/fragment_popular_games" >
+        <argument
+            android:name="friendIDs"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

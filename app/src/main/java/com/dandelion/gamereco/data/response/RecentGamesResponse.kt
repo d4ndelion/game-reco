@@ -16,7 +16,7 @@ data class Games(
     @SerializedName("appid") val appId: Int,
     @SerializedName("name") val name: String,
     @SerializedName("playtime_2weeks") val playtimeTwoWeeks: Int,
-    @SerializedName("playtime_forever") val playtimeForever: Int,
+    @SerializedName("playtime_forever") val playtimeForever: Long,
     @SerializedName("img_icon_url") val imageIconUrl: String,
     @SerializedName("playtime_windows_forever") val playtimeWindowsForever: Int,
     @SerializedName("playtime_mac_forever") val playtimeMacForever: Int,
@@ -24,5 +24,5 @@ data class Games(
 )
 
 fun RecentGamesResponse.toDomain() = response.games.map {
-    RecentlyPlayedGameModel(it.appId, it.name)
+    RecentlyPlayedGameModel(it.appId, it.name, it.playtimeForever)
 }
