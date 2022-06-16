@@ -15,6 +15,7 @@
     <string name="account_created">Account create date: %s</string>
     <string name="account_last_logged">Last login date: %s</string>
     <string name="view_friends">View friends</string>
+    <string name="favourite_games">Your Favourite Games</string>
 
     <!-- FriendsFragment -->
     <string name="your_friends">Your Friends</string>

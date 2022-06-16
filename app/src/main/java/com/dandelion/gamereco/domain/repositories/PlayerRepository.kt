@@ -62,7 +62,7 @@ class PlayerRepository(private val playerApi: IPlayerApi, private val prefs: IPr
 
     override suspend fun getFriendsList(): Flow<List<String>> = flow {
         val friendsListResponse = playerApi.getFriendsList(STEAM_API_KEY, prefs.steamId ?: "", RELATION_FRIEND)
-            .friendsList.friends.map(Friends::steamId)
+            .friendsList.friends.sortedByDescending(Friends::friendSince).map(Friends::steamId)
         emit(friendsListResponse)
     }
 }
