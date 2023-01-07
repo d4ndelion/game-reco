@@ -1,2 +1,1 @@
 # game-reco
-Diploma Project
